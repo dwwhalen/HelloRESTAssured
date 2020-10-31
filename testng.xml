@@ -2,7 +2,7 @@
 <suite name="Testing My First TestNG Test">
     <test name="Regression">
         <classes>
-            <class name="FirstClass"/>
+            <class name="MyTestClass"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
