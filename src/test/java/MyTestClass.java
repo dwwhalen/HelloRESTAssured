@@ -1,89 +1,108 @@
+import io.restassured.RestAssured;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.ResponseSpecification;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 
 public class MyTestClass {
 
-    @Test
-    public void test_CheckSize() {
-
-        given().
-                when().
-                get("http://ergast.com/api/f1/2017/circuits.json").
-                then().
-                assertThat().
-                body("MRData.CircuitTable.Circuits.circuitId", hasSize(20));
+    @BeforeClass
+    public void setup() {
+        RestAssured.baseURI = "http://localhost";
+        RestAssured.port = 3000;
     }
 
     @Test
-    public void test_CheckResponseHeader() {
+    public void checkResponseSize() {
 
         given().
                 when().
-                get("http://ergast.com/api/f1/2017/circuits.json").
+                get("albums").
+                then().
+                assertThat().
+                body("size()", is(12));
+    }
+
+    @Test
+    public void checkResponseHeader() {
+
+        given().
+                when().
+                get("albums").
                 then().
                 assertThat().
                 statusCode(200).
                 and().
                 contentType(ContentType.JSON).
                 and().
-                header("Content-Length", equalTo("4551"));
+                header("Content-Encoding", equalTo("gzip"));
     }
 
     @Test
-    public void test_QueryParam() {
+    public void queryParamExample() {
 
-        String getCheckSumForThisText = "testyoyoyo";
-        String expectedMd5CheckSum = "29fdc257dd69dee1a8d63acba6efb326";
+        String idToGet = "10";
+        String expectedTitle = "Yellow Submarine";
 
         given().
-                param("text", getCheckSumForThisText).
+                param("id", idToGet).
                 when().
-                get("http://md5.jsontest.com").
+                get("albums").
                 then().
                 assertThat().
-                body("md5", equalTo(expectedMd5CheckSum));
+                body("title[0]", equalTo(expectedTitle));
     }
 
     @Test
-    public void test_PathParam() {
+    public void pathParamexample() {
 
-        String season = "2017";
-        int numberOfRaces = 20;
+        String idToGet = "4";
+        String expectedTitle = "Beatles for Sale";
 
         given().
-                pathParam("raceSeason", season).
+                pathParam("id", idToGet).
                 when().
-                get("http://ergast.com/api/f1/{raceSeason}/circuits.json").
+                get("albums/{id}").
                 then().
                 assertThat().
-                body("MRData.CircuitTable.Circuits.circuitId", hasSize(numberOfRaces));
+                body("title", equalTo(expectedTitle));
     }
 
     @Test
-    public void test_PassValuesBetweenAPICalls() {
+    public void extractDataAndPassToNextAPICall() {
 
-        // First, retrieve the circuit ID for the first circuit of the 2017 season
-        String circuitId = given().
+        Integer albumId = given().
                 when().
-                get("http://ergast.com/api/f1/2017/circuits.json").
+                get("albums").
                 then().
                 extract().
-                path("MRData.CircuitTable.Circuits.circuitId[0]");
+                path("id[0]");
 
-        // Then, retrieve the information known for that circuit and verify it is located in Australia
         given().
-                pathParam("circuitId", circuitId).
+                pathParam("id", albumId.toString()).
                 when().
-                get("http://ergast.com/api/f1/circuits/{circuitId}.json").
+                get("albums/{id}").
                 then().
                 assertThat().
-                body("MRData.CircuitTable.Circuits.Location[0].country", equalTo("Australia"));
+                body("title", equalTo("Please Please Me"));
+    }
+
+    @Test
+    public void codeReuseWithResponseSpec() {
+
+        given().
+                when().
+                get("albums/").
+                then().
+                assertThat().
+                spec(checkStatusCodeAndContentType).
+                and().
+                body("size()", is(12));
     }
 
     ResponseSpecification checkStatusCodeAndContentType =
@@ -93,36 +112,23 @@ public class MyTestClass {
                     build();
 
     @Test
-    public void test_CodeReuseWithResponseSpec() {
+    public void logAllResponses() {
 
         given().
                 when().
-                get("http://ergast.com/api/f1/2017/circuits.json").
-                then().
-                assertThat().
-                spec(checkStatusCodeAndContentType).
-                and().
-                body("MRData.CircuitTable.Circuits.circuitId", hasSize(20));
-    }
-
-    @Test
-    public void test_LogAllResponses() {
-
-        given().
-                when().
-                get("http://ergast.com/api/f1/2020/circuits.json").
+                get("albums/").
                 then().
                 log().body();
     }
 
     @Test
-    public void test_LogIfValidationFails() {
+    public void logIfValidationFails() {
 
         given().
                 when().
-                get("http://ergast.com/api/f1/2020/circuits.json").
+                get("albums/").
                 then().
                 log().ifValidationFails().
-                statusCode(123);
+                statusCode(200);
     }
 }

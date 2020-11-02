@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Testing My First TestNG Test">
-    <test name="Regression">
+<suite name="REST Assured test examples">
+    <test name="All">
         <classes>
             <class name="MyTestClass"/>
         </classes>

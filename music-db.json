@@ -1,0 +1,76 @@
+{
+  "albums": [
+    {
+      "id": 1,
+      "artist": "The Beatles",
+      "title": "Please Please Me",
+      "year": "1963"
+    },
+    {
+      "id": 2,
+      "artist": "The Beatles",
+      "title": "With the Beatles",
+      "year": "1963"
+    },
+    {
+      "id": 3,
+      "artist": "The Beatles",
+      "title": "A Hard Day's Night",
+      "year": "1964"
+    },
+    {
+      "id": 4,
+      "artist": "The Beatles",
+      "title": "Beatles for Sale",
+      "year": "1964"
+    },
+    {
+      "id": 5,
+      "artist": "The Beatles",
+      "title": "Help!",
+      "year": "1965"
+    },
+    {
+      "id": 6,
+      "artist": "The Beatles",
+      "title": "Rubber Soul",
+      "year": "1965"
+    },
+    {
+      "id": 7,
+      "artist": "The Beatles",
+      "title": "Revolver",
+      "year": "1966"
+    },
+    {
+      "id": 8,
+      "artist": "The Beatles",
+      "title": "Sgt. Pepper's Lonely Hearts Club Band",
+      "year": "1967"
+    },
+    {
+      "id": 9,
+      "artist": "The Beatles",
+      "title": "The Beatles (White Album)",
+      "year": "1968"
+    },
+    {
+      "id": 10,
+      "artist": "The Beatles",
+      "title": "Yellow Submarine",
+      "year": "1969"
+    },
+    {
+      "id": 11,
+      "artist": "The Beatles",
+      "title": "Abbey Road",
+      "year": "1969"
+    },
+    {
+      "id": 12,
+      "artist": "The Beatles",
+      "title": "Let It Be",
+      "year": "1970"
+    }
+  ]
+}
