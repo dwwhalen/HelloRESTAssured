@@ -59,7 +59,7 @@ public class MyTestClass {
     }
 
     @Test
-    public void pathParamexample() {
+    public void pathParamExample() {
 
         String idToGet = "4";
         String expectedTitle = "Beatles for Sale";

@@ -2,6 +2,7 @@
 <suite name="REST Assured test examples">
     <test name="All">
         <classes>
+            <class name="HelloWorld"/>
             <class name="MyTestClass"/>
         </classes>
     </test> <!-- Test -->
