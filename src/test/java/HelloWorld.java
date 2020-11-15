@@ -5,7 +5,7 @@ import static io.restassured.RestAssured.given;
 public class HelloWorld {
 
     @Test
-    public void checkEmployeeSize() {
+    public void checkEmployeeStatus() {
 
         given().
                 when().
