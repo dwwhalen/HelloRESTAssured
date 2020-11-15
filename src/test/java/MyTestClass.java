@@ -156,6 +156,8 @@ public class MyTestClass {
         requestParams.put("year", "1964");
 
         // @formatter:off
+
+        //add the new album
         Response response =
                 given().
                     contentType(ContentType.JSON).
@@ -169,6 +171,7 @@ public class MyTestClass {
                     body("year",equalTo("1964")).
                     extract().response();
 
+        //delete album that was just added
         given().
                 contentType(ContentType.JSON).
                 body(requestParams.toString()).
