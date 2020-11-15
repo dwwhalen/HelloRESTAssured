@@ -146,7 +146,7 @@ public class MyTestClass {
     }
 
     @Test
-    public void PostNewAlbum() {
+    public void postNewAlbum() {
 
         Header acceptJson = new Header("Accept", "application/json");
 
@@ -156,7 +156,6 @@ public class MyTestClass {
         requestParams.put("year", "1964");
 
         // @formatter:off
-
         //add the new album
         Response response =
                 given().
@@ -173,12 +172,12 @@ public class MyTestClass {
 
         //delete album that was just added
         given().
-                contentType(ContentType.JSON).
-                body(requestParams.toString()).
+            contentType(ContentType.JSON).
+            body(requestParams.toString()).
         when().
-                delete("/albums/" + response.jsonPath().getInt("id")).
+            delete("/albums/" + response.jsonPath().getInt("id")).
         then().
-                statusCode(200);
+            statusCode(200);
 
         // @formatter:on
     }
