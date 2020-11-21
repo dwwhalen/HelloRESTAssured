@@ -126,7 +126,7 @@ public class MyTestClass {
         // @formatter:off
         given().
         when().
-                get("albums/").
+                get("albums/1").
         then().
                 log().body();
         // @formatter:on

@@ -29,3 +29,5 @@ Report will be generated to target/site/allure-maven-plugin folder. To open the 
 ```
 $ mvn io.qameta.allure:allure-maven:serve
 ```
+
+To infer JSON schema from JSON: https://www.liquid-technologies.com/online-json-to-schema-converter
