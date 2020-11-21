@@ -146,7 +146,7 @@ public class MyTestClass {
     }
 
     @Test
-    public void postNewAlbum() {
+    public void postNewAlbumThenDelete() {
 
         Header acceptJson = new Header("Accept", "application/json");
 
@@ -178,6 +178,13 @@ public class MyTestClass {
             delete("/albums/" + response.jsonPath().getInt("id")).
         then().
             statusCode(200);
+
+        //try to get the album we just deleted
+        given().
+        when().
+            get("/albums/" + response.jsonPath().getInt("id")).
+       then().
+            statusCode(404);
 
         // @formatter:on
     }
