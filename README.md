@@ -2,8 +2,8 @@
 Check out my [blog post](https://dev.to/dwwhalen/series/9704) for some more details about this repo.  
 
 # pre-reqs
-Java
-Node
+- Java
+- Node
 
 
 # Clone this repo
@@ -23,15 +23,12 @@ json-server --watch music-db.json
 ```
 
 # To run test and generate Allure report
-```
-$ mvn clean test
-```
-
-# To run test and generate Allure report
+Report will be generated to target/site/allure-maven-plugin folder:
 ```
 $ mvn clean test site
 ```
-Report will be generated to target/site/allure-maven-plugin folder. To open the report you can use the following command:
+
+To open/serve the report you can use the following command:
 ```
 $ mvn io.qameta.allure:allure-maven:serve
 ```
