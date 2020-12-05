@@ -18,7 +18,9 @@ npm install -g json-server
 
 #start json-server
 
+```
 json-server --watch music-db.json
+```
 
 # To run test and generate Allure report
 ```
