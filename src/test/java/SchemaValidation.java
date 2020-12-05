@@ -30,4 +30,20 @@ public class SchemaValidation {
         // @formatter:on
     }
 
+    @Test
+    public void checkAlbumsSchema() {
+        // @formatter:off
+        given().
+        when().
+            get("albums").
+        then().
+            log().ifValidationFails().
+            assertThat().
+            statusCode(200).
+        and().
+            contentType(ContentType.JSON).
+            body(matchesJsonSchemaInClasspath("albums_schema.json"));
+        // @formatter:on
+    }
+
 }

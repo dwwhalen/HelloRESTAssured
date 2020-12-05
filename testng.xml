@@ -2,8 +2,8 @@
 <suite name="REST Assured test examples">
     <test name="All">
         <classes>
-            <class name="HelloWorld"/>
+            <class name="SchemaValidation"/>
             <class name="MyTestClass"/>
         </classes>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
+    </test>
+</suite>
