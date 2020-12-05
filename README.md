@@ -1,6 +1,5 @@
 # References
-https://techbeacon.com/app-dev-testing/how-perform-api-testing-rest-assured
-https://github.com/allure-examples/allure-testng-example/blob/master/pom.xml
+Check out my [blog post](https://dev.to/dwwhalen/series/9704) for some more details about this repo.  
 
 # pre-reqs
 Java
