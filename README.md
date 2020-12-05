@@ -23,6 +23,11 @@ json-server --watch music-db.json
 
 # To run test and generate Allure report
 ```
+$ mvn clean test
+```
+
+# To run test and generate Allure report
+```
 $ mvn clean test site
 ```
 Report will be generated to target/site/allure-maven-plugin folder. To open the report you can use the following command:
@@ -30,4 +35,4 @@ Report will be generated to target/site/allure-maven-plugin folder. To open the 
 $ mvn io.qameta.allure:allure-maven:serve
 ```
 
-To infer JSON schema from JSON: https://www.liquid-technologies.com/online-json-to-schema-converter
+FYI regarding schema validation...to infer JSON schema from JSON: https://www.liquid-technologies.com/online-json-to-schema-converter
